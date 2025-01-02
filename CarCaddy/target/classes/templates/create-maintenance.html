@@ -1,0 +1,76 @@
+<!--!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Create Maintenance Record</title>-->
+<!--    <link rel="stylesheet" th:href="@{/styles.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <h1>Create Maintenance Record</h1>-->
+<!--</header>-->
+<!--<form th:action="@{/maintenance}" th:object="${record}" method="post">-->
+<!--    <label for="car_id">Car ID:</label>-->
+<!--    <input type="number" id="car_id" name="car_id" required><br>-->
+
+<!--    <label>Maintenance Date:</label>-->
+<!--    <input type="date" th:field="*{maintenanceDate}" required><br>-->
+
+<!--    <label for="description">Description:</label>-->
+<!--    <textarea id="description" name="description" required></textarea><br>-->
+
+<!--    <label for="maintenanceType">Maintenance Type:</label>-->
+<!--    <input type="text" id="maintenanceType" name="maintenanceType" required><br>-->
+
+<!--    <label for="maintenanceStatus">Maintenance Status:</label>-->
+<!--    <input type="text" id="maintenanceStatus" name="maintenanceStatus" required><br>-->
+
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Maintenance Record</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Create Maintenance Record</h1>
+</header>
+
+
+
+<form th:action="@{/maintenance}" th:object="${record}" method="post">
+    <label for="car_id">Car ID:</label>
+    <input type="number" id="car_id" th:field="*{car_id}" required><br>
+
+<!--    <label for="maintenance_date">Maintenance Date:</label>-->
+<!--    <input type="date" id="maintenance_date" th:field="*{maintenance_date}" required><br>-->
+
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" required></textarea><br>
+
+    <label for="maintenanceType">Maintenance Type:</label>
+    <input type="text" id="maintenanceType" th:field="*{maintenanceType}" required><br>
+
+    <label for="maintenanceStatus">Maintenance Status:</label>
+    <input type="text" id="maintenanceStatus" th:field="*{maintenanceStatus}" required><br>
+
+    <button type="submit">Submit</button>
+    Success and Error Messages
+    <div th:if="${successMessage}" class="success">
+        <h6 th:text="${successMessage}"></h6>
+    </div>
+    <div th:if="${errorMessage}" class="error">
+        <h6 th:text="${errorMessage}"></h6>
+    </div>
+
+
+</form>
+</body>
+</html>
