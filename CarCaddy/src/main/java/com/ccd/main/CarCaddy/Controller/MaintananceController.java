@@ -32,13 +32,13 @@ public class MaintananceController {
     @PostMapping("/maintenance")
     public String saveMaintenanceRecord(@ModelAttribute Maintainance record, Model model) {
         System.out.println("Postmappping controller is runningggg.............");
-        try {
+//        try {
             //  maintananceRepository.save(record);
             maintananceService.createMaintenance(record);
             // model.addAttribute("successMessage", "Maintenance record saved successfully!");
-        } catch (Exception e) {
+//        } catch (Exception e) {
             //model.addAttribute("errorMessage", "Failed to save maintenance record.");
-        }
+//        }
         return "redirect:/maintenance/list";
     }
 
@@ -49,35 +49,35 @@ public class MaintananceController {
     }
     @GetMapping("/maintenance/delete/{id}")
     public String deleteMaintenanceRecord(@PathVariable("id") Integer id, Model model) {
-        try {
+//        try {
             maintananceService.deleteMaintenance(id); // Call the service to delete the record
             model.addAttribute("successMessage", "Maintenance record deleted successfully!");
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Failed to delete maintenance record.");
-        }
+//        } catch (Exception e) {
+//            model.addAttribute("errorMessage", "Failed to delete maintenance record.");
+//        }
         return "redirect:/maintenance/list"; // Redirect to the maintenance list page
     }
     @GetMapping("/maintenance/edit/{id}")
     public String showEditMaintenanceForm(@PathVariable("id") Integer id, Model model) {
-        try {
+       // try {
             Maintainance record = maintananceService.getMaintenanceById(id); // Get the record by ID
             model.addAttribute("record", record);
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Record not found.");
-        }
+//        } catch (Exception e) {
+//            model.addAttribute("errorMessage", "Record not found.");
+//        }
         return "edit-maintenance"; // Return the edit form view
     }
 
     // Handle Update Submission
     @PostMapping("/maintenance/edit/{id}")
     public String updateMaintenanceRecord(@PathVariable("id") Integer id, @ModelAttribute Maintainance record, Model model) {
-        try {
+       // try {
             record.setMaintenance_Id(id); // Ensure the correct ID is set for updating
             maintananceService.updateMaintenance(record); // Call service to update the record
             model.addAttribute("successMessage", "Maintenance record updated successfully!");
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", "Failed to update maintenance record.");
-        }
+//        } catch (Exception e) {
+//            model.addAttribute("errorMessage", "Failed to update maintenance record.");
+//        }
         return "redirect:/maintenance/list"; // Redirect to list page after updating
     }
 //    @RequestMapping(value ="/about", method = RequestMethod.GET)
